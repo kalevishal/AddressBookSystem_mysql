@@ -116,6 +116,36 @@ mysql> SELECT COUNT(City) FROM Address_Book_Table;
 +-------------+
 1 row in set (0.14 sec)
 
+#UC8 - Ability to retrieve entries in alphabetical order by First Name
+
+mysql> select * from Address_Book_Table;
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+
+| FirstName | LastName | Address                   | City      | State       | Zip    | PhoneNumber | Email        |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+
+| Vishal    | kale     | sai sagar housing society | shirdi    | MH          | 423109 |       90215 | vk@gmail.com |
+| Utkarsh   | Mishra   | 55B,xyz colony            | zhasi     | UtarPradesh | 555104 |      778899 | um@gmail.com |
+| Satish    | Gupta    | 11VB,sai colony           | hyderabad | Telangana   | 641122 |       89552 | sg@gmail.com |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from Address_Book_Table where State='MH' order by FirstName ASC;
++-----------+----------+---------------------------+--------+-------+--------+-------------+--------------+
+| FirstName | LastName | Address                   | City   | State | Zip    | PhoneNumber | Email        |
++-----------+----------+---------------------------+--------+-------+--------+-------------+--------------+
+| Vishal    | kale     | sai sagar housing society | shirdi | MH    | 423109 |       90215 | vk@gmail.com |
++-----------+----------+---------------------------+--------+-------+--------+-------------+--------------+
+1 row in set (0.03 sec)
+
+mysql> select * from Address_Book_Table order by FirstName ASC;
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+
+| FirstName | LastName | Address                   | City      | State       | Zip    | PhoneNumber | Email        |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+
+| Satish    | Gupta    | 11VB,sai colony           | hyderabad | Telangana   | 641122 |       89552 | sg@gmail.com |
+| Utkarsh   | Mishra   | 55B,xyz colony            | zhasi     | UtarPradesh | 555104 |      778899 | um@gmail.com |
+| Vishal    | kale     | sai sagar housing society | shirdi    | MH          | 423109 |       90215 | vk@gmail.com |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+
+3 rows in set (0.00 sec)
+
 
 
 
