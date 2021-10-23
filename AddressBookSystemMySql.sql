@@ -147,6 +147,97 @@ mysql> select * from Address_Book_Table order by FirstName ASC;
 3 rows in set (0.00 sec)
 
 
+#UC9 - Ability to identify each Address Book with name and Type.
+
+
+mysql> ALTER TABLE Address_Book_Table ADD Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY AFTER Email;
+Query OK, 0 rows affected (3.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from Address_Book_Table;
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+----+
+| FirstName | LastName | Address                   | City      | State       | Zip    | PhoneNumber | Email        | Id |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+----+
+| Vishal    | kale     | sai sagar housing society | shirdi    | MH          | 423109 |       90215 | vk@gmail.com |  1 |
+| Utkarsh   | Mishra   | 55B,xyz colony            | zhasi     | UtarPradesh | 555104 |      778899 | um@gmail.com |  2 |
+| Satish    | Gupta    | 11VB,sai colony           | hyderabad | Telangana   | 641122 |       89552 | sg@gmail.com |  3 |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+----+
+3 rows in set (0.00 sec)
+
+mysql> alter table Address_Book_Table ADD Type VARCHAR(50) NOT NULL AFTER Id;
+Query OK, 0 rows affected (0.50 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE Address_Book_Table SET Type ='Family' WHERE Id=1;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE Address_Book_Table SET Type ='Family' WHERE Id=2;
+Query OK, 1 row affected (0.18 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE Address_Book_Table SET Type ='Freind' WHERE Id=3;
+Query OK, 1 row affected (0.20 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Address_Book_Table;
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+----+--------+
+| FirstName | LastName | Address                   | City      | State       | Zip    | PhoneNumber | Email        | Id | Type   |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+----+--------+
+| Vishal    | kale     | sai sagar housing society | shirdi    | MH          | 423109 |       90215 | vk@gmail.com |  1 | Family |
+| Utkarsh   | Mishra   | 55B,xyz colony            | zhasi     | UtarPradesh | 555104 |      778899 | um@gmail.com |  2 | Family |
+| Satish    | Gupta    | 11VB,sai colony           | hyderabad | Telangana   | 641122 |       89552 | sg@gmail.com |  3 | Freind |
++-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+----+--------+
+3 rows in set (0.00 sec)
+
+mysql> insert into Address_Book_Table(FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email,Id,Type) values("Mahesh","Dighe","Rahata","Ahamadnagr","Maharashtra",'425109');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into Address_Book_Table(FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email,Id,Type) values("Mahesh","Dighe","Rahata","Ahamadnagr","Maharashtra",'425109','87444','mg@gmail.com','4','Profession');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> select * from Address_Book_Table;
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+
+| FirstName | LastName | Address                   | City       | State       | Zip    | PhoneNumber | Email        | Id | Type       |
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+
+| Vishal    | kale     | sai sagar housing society | shirdi     | MH          | 423109 |       90215 | vk@gmail.com |  1 | Family     |
+| Utkarsh   | Mishra   | 55B,xyz colony            | zhasi      | UtarPradesh | 555104 |      778899 | um@gmail.com |  2 | Family     |
+| Satish    | Gupta    | 11VB,sai colony           | hyderabad  | Telangana   | 641122 |       89552 | sg@gmail.com |  3 | Freind     |
+| Mahesh    | Dighe    | Rahata                    | Ahamadnagr | Maharashtra | 425109 |       87444 | mg@gmail.com |  4 | Profession |
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+
+4 rows in set (0.02 sec)
+
+mysql> alter table Address_Book_Table Add (AddressBook varchar(50) not null);
+Query OK, 0 rows affected (2.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE Address_Book_Table SET AddressBook = 'contact 1' WHERE Id=1;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE Address_Book_Table SET AddressBook = 'contact 3' WHERE Id=3;
+Query OK, 1 row affected (0.19 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE Address_Book_Table SET AddressBook = 'contact 2' WHERE Id=2;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE Address_Book_Table SET AddressBook = 'contact 4' WHERE Id=4;
+Query OK, 1 row affected (0.27 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Address_Book_Table;
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+-------------+
+| FirstName | LastName | Address                   | City       | State       | Zip    | PhoneNumber | Email        | Id | Type       | AddressBook |
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+-------------+
+| Vishal    | kale     | sai sagar housing society | shirdi     | MH          | 423109 |       90215 | vk@gmail.com |  1 | Family     | contact 1   |
+| Utkarsh   | Mishra   | 55B,xyz colony            | zhasi      | UtarPradesh | 555104 |      778899 | um@gmail.com |  2 | Family     | contact 2   |
+| Satish    | Gupta    | 11VB,sai colony           | hyderabad  | Telangana   | 641122 |       89552 | sg@gmail.com |  3 | Freind     | contact 3   |
+| Mahesh    | Dighe    | Rahata                    | Ahamadnagr | Maharashtra | 425109 |       87444 | mg@gmail.com |  4 | Profession | contact 4   |
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+-------------+
+4 rows in set (0.00 sec)
+
+
 
 
 
