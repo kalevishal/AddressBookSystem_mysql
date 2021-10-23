@@ -94,6 +94,17 @@ mysql> select * from Address_Book_Table;
 +-----------+----------+---------------------------+-----------+-------------+--------+-------------+--------------+
 3 rows in set (0.00 sec)
 
+ #UC6 - ability to retrive person belonging to a city
+
+
+mysql> SELECT * FROM Address_Book_Table WHERE City='hyderabad';
++-----------+----------+-----------------+-----------+-----------+--------+-------------+--------------+
+| FirstName | LastName | Address         | City      | State     | Zip    | PhoneNumber | Email        |
++-----------+----------+-----------------+-----------+-----------+--------+-------------+--------------+
+| Satish    | Gupta    | 11VB,sai colony | hyderabad | Telangana | 641122 |       89552 | sg@gmail.com |
++-----------+----------+-----------------+-----------+-----------+--------+-------------+--------------+
+1 row in set (0.00 sec)
+
 
 
 
