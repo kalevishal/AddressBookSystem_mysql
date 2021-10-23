@@ -237,7 +237,17 @@ mysql> select * from Address_Book_Table;
 +-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+-------------+
 4 rows in set (0.00 sec)
 
+#UC10 count by type.
 
+mysql> select type, count(FirstName) from Address_Book_Table group by type;
++------------+------------------+
+| type       | count(FirstName) |
++------------+------------------+
+| Family     |                2 |
+| Freind     |                1 |
+| Profession |                1 |
++------------+------------------+
+3 rows in set (0.10 sec)
 
 
 
