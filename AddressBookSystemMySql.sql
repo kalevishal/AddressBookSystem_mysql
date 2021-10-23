@@ -37,3 +37,37 @@ mysql> DESCRIBE Address_Book_Table;
 | Email       | varchar(50)  | NO   |     | NULL    |       |
 +-------------+--------------+------+-----+---------+-------+
 8 rows in set (0.33 sec)
+
+#UC3 - Adding Contacts
+
+mysql> INSERT INTO Address_Book_Table VALUES
+    -> ('Vishal','kale','211D,abc colony','shirdi','Maharashtra','423109','90215','vk@gmail.com'),
+    -> ('Utkarsh','Mishra','55B,xyz colony','zhasi','UtarPradesh','555104','778899','um@gmail.com'),
+    -> ('Shivraj','Jadhav','002C,pqr colony','solapur','Maharashtra','741111','55662','sj@gmail.com'),
+    -> ('Satish','Gupta','11VB,sai colony','hyderabad','Telangana','641122','89552','sg@gmail.com');
+Query OK, 4 rows affected (0.33 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from Address_Book_Table;
++-----------+----------+-----------------+-----------+-------------+--------+-------------+--------------+
+| FirstName | LastName | Address         | City      | State       | Zip    | PhoneNumber | Email        |
++-----------+----------+-----------------+-----------+-------------+--------+-------------+--------------+
+| Vishal    | kale     | 211D,abc colony | shirdi    | Maharashtra | 423109 |       90215 | vk@gmail.com |
+| Utkarsh   | Mishra   | 55B,xyz colony  | zhasi     | UtarPradesh | 555104 |      778899 | um@gmail.com |
+| Shivraj   | Jadhav   | 002C,pqr colony | solapur   | Maharashtra | 741111 |       55662 | sj@gmail.com |
+| Satish    | Gupta    | 11VB,sai colony | hyderabad | Telangana   | 641122 |       89552 | sg@gmail.com |
++-----------+----------+-----------------+-----------+-------------+--------+-------------+--------------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
