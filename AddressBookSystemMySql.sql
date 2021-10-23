@@ -105,6 +105,16 @@ mysql> SELECT * FROM Address_Book_Table WHERE City='hyderabad';
 +-----------+----------+-----------------+-----------+-----------+--------+-------------+--------------+
 1 row in set (0.00 sec)
 
+#UC7 - Ability to get the size of the address book by the city
+
+
+mysql> SELECT COUNT(City) FROM Address_Book_Table;
++-------------+
+| COUNT(City) |
++-------------+
+|           3 |
++-------------+
+1 row in set (0.14 sec)
 
 
 
