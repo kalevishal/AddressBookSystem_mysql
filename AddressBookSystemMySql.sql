@@ -249,7 +249,23 @@ mysql> select type, count(FirstName) from Address_Book_Table group by type;
 +------------+------------------+
 3 rows in set (0.10 sec)
 
+#UC11 - Ability to add person to both Friend and Family
 
+
+mysql> insert into Address_Book_Table(FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email,Id,Type,AddressBook) values('abhishek','mahale','44A, xy colony','yeola','maha','412122','8855264','am@gmail.com','5','family','contact 5');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from Address_Book_Table;
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+-------------+
+| FirstName | LastName | Address                   | City       | State       | Zip    | PhoneNumber | Email        | Id | Type       | AddressBook |
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+-------------+
+| Vishal    | kale     | sai sagar housing society | shirdi     | MH          | 423109 |       90215 | vk@gmail.com |  1 | Family     | contact 1   |
+| Utkarsh   | Mishra   | 55B,xyz colony            | zhasi      | UtarPradesh | 555104 |      778899 | um@gmail.com |  2 | Family     | contact 2   |
+| Satish    | Gupta    | 11VB,sai colony           | hyderabad  | Telangana   | 641122 |       89552 | sg@gmail.com |  3 | Freind     | contact 3   |
+| Mahesh    | Dighe    | Rahata                    | Ahamadnagr | Maharashtra | 425109 |       87444 | mg@gmail.com |  4 | Profession | contact 4   |
+| abhishek  | mahale   | 44A, xy colony            | yeola      | maha        | 412122 |     8855264 | am@gmail.com |  5 | family     | contact 5   |
++-----------+----------+---------------------------+------------+-------------+--------+-------------+--------------+----+------------+-------------+
+5 rows in set (0.11 sec)
 
 
 
